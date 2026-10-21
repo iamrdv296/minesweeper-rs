@@ -6,10 +6,7 @@ mod display_config;
 mod models;
 mod utils;
 
-
 use crossterm::style::Print;
-use crossterm::terminal::Clear;
-
 
 fn main() -> io::Result<()> {
     let mut stdout = io::stdout();

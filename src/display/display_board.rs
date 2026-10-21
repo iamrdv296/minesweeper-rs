@@ -10,6 +10,7 @@ use crate::{
 };
 use crate::display_config::*;
 use crossterm::style::{Color, Print, SetForegroundColor};
+use crossterm::terminal::Clear;
 
 pub fn display_board(stdout: &mut Stdout, board: &Board) -> io::Result<()> {
     let cells = board.get_cells();
