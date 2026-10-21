@@ -19,6 +19,8 @@ pub fn display_board(stdout: &mut Stdout, board: &Board) -> io::Result<()> {
     let row_num_width = rows.to_string().len();
     let col_num_width = cols.to_string().len();
 
+    crossterm::execute!(stdout, Clear(crossterm::terminal::ClearType::All))?;
+    
     display_col_numbers(
         stdout,
         cols,

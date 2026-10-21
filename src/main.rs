@@ -21,7 +21,6 @@ fn main() -> io::Result<()> {
     let mut running = true;
 
     while running {
-        crossterm::execute!(stdout, Clear(crossterm::terminal::ClearType::All))?;
         display_board(&mut stdout, &board)?;
 
         crossterm::execute!(
