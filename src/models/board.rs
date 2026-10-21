@@ -41,6 +41,12 @@ impl Board {
         }
     }
 
+    pub fn unflag_all(&mut self) {
+        for cell in &mut self.cells {
+            cell.flagged = false;
+        }
+    }
+
     pub fn reveal_cell(&mut self, row: usize, col: usize) -> RevealState {
         let index = rowcol_to_rowmajor(row, col, self.cols);
 

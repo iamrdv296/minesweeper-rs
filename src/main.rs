@@ -8,18 +8,20 @@ mod utils;
 
 
 use crossterm::style::Print;
+use crossterm::terminal::Clear;
 
 
 fn main() -> io::Result<()> {
     let mut stdout = io::stdout();
-
-    let mut board = Board::new(4, 4, 1)
+    
+    let mut board = Board::new(10, 10, 11)
         .expect("Invalid board configuration");
 
     let mut first_click = true;
     let mut running = true;
 
     while running {
+        crossterm::execute!(stdout, Clear(crossterm::terminal::ClearType::All))?;
         display_board(&mut stdout, &board)?;
 
         crossterm::execute!(
@@ -64,6 +66,7 @@ fn main() -> io::Result<()> {
 
         match board.reveal_cell(row, col) {
             RevealState::Mine => {
+                board.unflag_all();
                 board.reveal_all();
                 display_board(&mut stdout, &board)?;
 
